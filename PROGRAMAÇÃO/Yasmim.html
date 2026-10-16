@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Para o meu amor s2</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="coracoes">
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        </div>
+
+        <h1>Te amo mil milhões !! S2 </h1>
+        <p>Uma pequena surpresa para você, meu amor. </p>
+        <p>Espero que goste e que saiba o quanto é especial para mim. </p>
+
+
+        <button id="botaoSurpresa">Clique aqui para uma surpresa ❤️</button>
+
+        <p id="mensagemSurpresa" hidden>
+            
+         Você é uma das pessoas mais importantes da minha vida, mexe comigo como ninguem mais consegue. Te amo muito, e quero que saiba que sempre estarei aqui para você, nos bons e maus momentos.
+         Te amo mil milhões ❤️❤️❤️❤️❤️
+
+        </p>
+
+        <div id="carrosel" class="carrosel" hidden>
+             <span class="gatinho gato1">🐈</span>
+             <span class="gatinho gato2">🐈‍⬛</span>
+             <span class="gatinho gato3">🐱</span>
+             <span class="gatinho gato4">🐈</span>
+             <div class="moldura-foto">
+                <img id="fatoCarrosel" src="Imagens/foto1.jpeg" alt="Uma lembrança especial">
+            </div>
+
+            <p id="legendaFoto">Um momento especial ❤️ </p>
+
+        </div>
+
+        <script>
+            const botao = document.getElementById('botaoSurpresa');
+            const mensagem = document.getElementById('mensagemSurpresa');
+            const fotos = [
+                "imagens/foto1.jpeg",
+                "imagens/foto2.jpeg",
+                "imagens/foto3.jpeg",
+                "imagens/foto4.jpeg"
+            ];
+
+            let indiceFoto = 0;
+
+            botao.addEventListener('click', function () {
+                mensagem.hidden = false;
+                document.getElementById('carrosel').hidden = false;
+                setInterval(trocarFoto, 3000); // Troca a foto a cada 3 segundos
+                botao.textContent = "Surpresa revelada! ❤️";
+
+                const audio = document.getElementById("audioMusica")
+                audio.play().catch(function() {
+                    console.error("Erro ao reproduzir a música:", erro);
+
+                    document.querySelector(".player-musica").style.display = "block";
+
+                    alert("Não foi possível reproduzir a música automaticamente. Por favor, clique no botão de play para ouvir a música.");
+                })
+            });
+
+
+            function trocarFoto() {
+                const imagem = document.getElementById('fatoCarrosel');
+                imagem.classList.add("trocando"); // Adiciona a classe para animação de transição
+
+                setTimeout(function () {
+                    indiceFoto = (indiceFoto + 1) % fotos.length;
+                    imagem.src = fotos[indiceFoto];
+                    imagem.classList.remove("trocando"); // Remove a classe após a transição
+                }, 600); // Tempo da animação de transição
+            }
+
+        </script>
+
+<div class="player-musica">
+    <p>🎵 Nossa trilha sonora</p>
+
+    <audio id="audioMusica" controls preload="metadata">
+        <source src="musica/joji.mp3" type="audio/mpeg">
+        Seu navegador não conseguiu tocar nossa música. ❤️ /* mensagem para caso o navegador não suporte o elemento de áudio */
+    </audio>
+</div>
+
+    </body>
+</html>
